@@ -21,6 +21,9 @@ var all = {
   // Componenets path of server
   components: path.normalize(__dirname + '/../../../components'),
 
+  // logs path of server
+  logsPath: path.normalize(__dirname + '/../../../logs'),
+
   // Server port
   port: process.env.PORT || 9000,
 
