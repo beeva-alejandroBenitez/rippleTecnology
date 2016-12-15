@@ -1,6 +1,7 @@
 'use strict';
 
-const httpConnector = require(`${global.config.components}/httpconnector`);
+// const httpConnector = require(`${global.config.components}/httpconnector`);
+import httpConnector from '../../components/httpconnector';
 
 const OFFER_PASSIVE_FLAG = 65536,
   OFFER_IMMEDIATE_CANCEL_FLAG = 131072,
@@ -26,13 +27,13 @@ const callRippleCreateOffer = function (re, res) {
           flags += OFFER_FILL_KILL_FLAG;
           break;
       }
-      
+
       let takerGets = req.body.takerGets;
       takerGets.value = takerGets.value.toString();
-    
+
       let takerPays = req.body.takerPays;
       takerPays.value = takerPays.value.toString();
-    
+
       var request = {
         method: "submit",
         params: [
@@ -48,11 +49,11 @@ const callRippleCreateOffer = function (re, res) {
           }
         ]
       };
-      
+
       // if (expirationTime) {
       //   request.params[0].tx_json.Expiration = expirationTime;
       // }
-      
+
       httpConnector.postApiCall(global.config.RIPPLEDDOMAIN, request, undefined)
         .then(function (dataRippled) {
           if (dataRippled.result.status !== "success" || ((dataRippled.result.engine_result !== "tesSUCCESS") && (dataRippled.result.engine_result !== "terQUEUED"))) {

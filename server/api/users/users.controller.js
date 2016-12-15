@@ -1,6 +1,7 @@
 'use strict';
 
-const httpConnector = require(`${global.config.components}/httpconnector`);
+// const httpConnector = require(`${global.config.components}/httpconnector`);
+import httpConnector from '../../components/httpconnector';
 
 export function list(req, res) {
   httpConnector.getApiCall();
@@ -8,6 +9,6 @@ export function list(req, res) {
 }
 
 export function create(req, res) {
-  
+
   res.end();
 }

@@ -1,10 +1,11 @@
 'use strict';
 
-var express = require('express');
-var controller = require('./payment.controller');
+import {Router} from 'express';
+import * as controller from './payments.controller';
 
-var router = express.Router();
+var router = new Router();
 
-router.get('/', controller.index);
+router.get('/preparePayments', controller.preparePayments);
+router.get('/submitPayments', controller.submitPayments);
 
 module.exports = router;

@@ -17,7 +17,7 @@ var all = {
 
   // Root path of server
   root: path.normalize(__dirname + '/../../..'),
-  
+
   // Componenets path of server
   components: path.normalize(__dirname + '/../../../components'),
 
@@ -46,7 +46,7 @@ var all = {
       }
     }
   },
-  
+
   RIPPLEDDOMAIN: ''
 };
 
