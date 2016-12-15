@@ -1,0 +1,55 @@
+{
+	"id": "8f1ce39a-ba30-eeb0-e0e0-e05a640f2a83",
+	"name": "RyD-RippleConnector",
+	"description": "",
+	"order": [
+		"9515c6cc-33eb-e01b-9f96-1b1ed9875f31",
+		"f5f343ac-ad0b-588e-91c4-8bb01c8d0920"
+	],
+	"folders": [],
+	"timestamp": 1481829894067,
+	"owner": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "9515c6cc-33eb-e01b-9f96-1b1ed9875f31",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:9000/api/payments/preparePayments",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "8f1ce39a-ba30-eeb0-e0e0-e05a640f2a83",
+			"data": null,
+			"dataMode": "params",
+			"name": "PreparePayments",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1481829894067,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "f5f343ac-ad0b-588e-91c4-8bb01c8d0920",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:9000/api/payments/submitPayments",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "8f1ce39a-ba30-eeb0-e0e0-e05a640f2a83",
+			"data": null,
+			"dataMode": "params",
+			"name": "SubmitPayments",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1481829983083,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}
