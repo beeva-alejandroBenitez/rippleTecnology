@@ -26,6 +26,8 @@ var all = {
 
   // Server port
   port: process.env.PORT || 9000,
+  rippleEndpoint: 'https://api.ripple.com/',
+  rippleVersion: 'v1/',
 
   // Server IP
   ip: process.env.IP || '0.0.0.0',

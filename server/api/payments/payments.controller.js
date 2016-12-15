@@ -4,15 +4,16 @@ import restCall from '../../components/httpconnector';
 import logger from '../../components/logger';
 import async from 'async';
 
-// const rippleEndpoint = global.config.rippleEndpoint;
-// const config = global.config;
-//
+const config = global.config;
+const rippleEndpoint = config.rippleEndpoint;
+const rippleVersion = config.rippleEndpoint;
+
 // let rippleURLs = this.urls = {
-//   url_accounts : config.RIPPLEDOMAIN + config.RIPPLEVERSION + '/accounts/',
-//   ripple_transaction: config.RIPPLEDOMAIN + config.RIPPLEVERSION + '/transactions/:{transaction_hash}',
-//   get_generate_UUID : config.RIPPLEDOMAIN + config.RIPPLEVERSION + '/uuid',
-//   get_transaction_fee : config.RIPPLEDOMAIN + config.RIPPLEVERSION + '/transaction-fee',
-//   get_order_book: config.RIPPLEDOMAIN + config.RIPPLEVERSION + '/accounts/:{address}/order_book/:{base_currency}+:{base_counterparty}/:{destination_currency}+:{destination_counterparty}'
+//   url_accounts : rippleEndpoint + rippleVersion + '/accounts/',
+//   ripple_transaction: rippleEndpoint + rippleVersion + '/transactions/:{transaction_hash}',
+//   get_generate_UUID : rippleEndpoint + rippleVersion + '/uuid',
+//   get_transaction_fee : rippleEndpoint + rippleVersion + '/transaction-fee',
+//   get_order_book: rippleEndpoint + rippleVersion + '/accounts/:{address}/order_book/:{base_currency}+:{base_counterparty}/:{destination_currency}+:{destination_counterparty}'
 // };
 
 const header = {
