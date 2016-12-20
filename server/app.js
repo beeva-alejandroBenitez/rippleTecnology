@@ -10,6 +10,13 @@ mongoose.Promise = require('bluebird');
 import config from './config/environment';
 import http from 'http';
 
+
+const RippleAPI = require('ripple-lib').RippleAPI;
+
+config.rippleApi = new RippleAPI({
+  server: config.rippledEndpoint // Public rippled server
+});
+
 global.config = config;
 // Connect to MongoDB
 mongoose.connect(config.mongo.uri, config.mongo.options);
