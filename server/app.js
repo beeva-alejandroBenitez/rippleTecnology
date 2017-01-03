@@ -5,28 +5,28 @@
 'use strict';
 
 import express from 'express';
-import mongoose from 'mongoose';
-mongoose.Promise = require('bluebird');
-import config from './config/environment';
 import http from 'http';
+const config = require('./config/environment');
 
-
-const RippleAPI = require('ripple-lib').RippleAPI;
+const { RippleAPI } = require('ripple-lib');
 
 config.rippleApi = new RippleAPI({
   server: config.rippledEndpoint // Public rippled server
 });
 
-global.config = config;
-// Connect to MongoDB
-mongoose.connect(config.mongo.uri, config.mongo.options);
-mongoose.connection.on('error', function(err) {
-  console.error('MongoDB connection error: ' + err);
-  process.exit(-1);
+config.rippleApi.on('error', (errorCode, errorMessage) => {
+  console.log(errorCode + ': ' + errorMessage);
+});
+config.rippleApi.on('connected', () => {
+  console.log('connected');
+});
+config.rippleApi.on('disconnected', (code) => {
+  // code - [close code](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent) sent by the server
+  // will be 1000 if this was normal closure
+  console.log('disconnected, code:', code);
 });
 
-// Populate databases with sample data
-if (config.seedDB) { require('./config/seed'); }
+global.config = config;
 
 // Setup server
 var app = express();

@@ -6,6 +6,7 @@
 
 import errors from './components/errors';
 import path from 'path';
+import middlewares from './config/middlewares';
 
 export default function(app) {
   // Insert routes below
@@ -14,8 +15,11 @@ export default function(app) {
   app.use('/api/users', require('./api/users'));
   app.use('/api/offers', require('./api/offers'));
   app.use('/api/payments', require('./api/payments'));
+  app.use('/api/transactions', require('./api/transactions'));
 
   app.use('/auth', require('./auth').default);
+  
+  app.use(middlewares.jsonSchemaValidation('JsonSchemaValidation'));
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

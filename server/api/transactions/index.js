@@ -2,11 +2,11 @@
 
 const express = require('express');
 const { validate } = require('express-jsonschema');
-const controller = require('./offers.controller');
+const controller = require('./transactions.controller');
 const schemas = require('./schemas');
 
 var router = express.Router();
 
-router.post('/', validate({body: schemas.createOrder}), controller.createOrder);
+router.get('/', validate({query: schemas.retrieveTransaction}), controller.retrieveTransaction);
 
 module.exports = router;
