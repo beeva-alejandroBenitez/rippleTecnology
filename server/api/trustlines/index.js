@@ -8,5 +8,6 @@ const schemas = require('../../schemas/trustline.schema');
 var router = express.Router();
 
 router.post('/', validate({body: schemas.createTrustline}), controller.createTrustline);
+router.get('/', controller.listTrustline);
 
 module.exports = router;

@@ -8,5 +8,6 @@ const schemas = require('../../schemas/payments.schema');
 var router = express.Router();
 
 router.post('/', validate({body: schemas.createPayment}), controller.createPayment);
+router.get('/', controller.listPayment);
 
 module.exports = router;

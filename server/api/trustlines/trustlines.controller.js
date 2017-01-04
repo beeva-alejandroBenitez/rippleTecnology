@@ -5,7 +5,7 @@ const config = global.config;
 const rippleApi = config.rippleApi;
 
 /**
- * PAYMENT
+ * CREATE TRUSTLINE
  */
 exports.createTrustline = (req, res) => {
   logger.info('api.trustlines.createTrustline: Init');
@@ -61,7 +61,7 @@ exports.createTrustline = (req, res) => {
     })
     .catch((error) => {
       rippleApi.disconnect();
-      logger.info('api.trustline.createTrustline: FAIL', result.resultMessage);
+      logger.info('api.trustlines.createTrustline: FAIL', error);
       res.status(500).json({
         result: {
           code: 500,
@@ -69,5 +69,49 @@ exports.createTrustline = (req, res) => {
         }
       });
     });
-  logger.info('api.trustline.createTrustline: End');
+  logger.info('api.trustlines.createTrustline: End');
+};
+
+/**
+ * GET TRUSTLINE
+ */
+exports.listTrustline = (req, res) => {
+  logger.info('api.trustlines.listTrustline: Init');
+  let address = req.body.address;
+  rippleApi.connect()
+    .then(() => {
+      logger.info('api.trustlines.listTrustline: address', address);
+      return rippleApi.getTrustlines(address);
+    })
+    .then((result) => {
+      rippleApi.disconnect();
+      if (result.resultCode === "tesSUCCESS") {
+        logger.info('api.trustlines.listTrustline: SUCCESS', result.resultMessage);
+        res.status(200).json({
+          result: {
+            code: 200,
+            info: result.resultMessage
+          }
+        });
+      } else {
+        logger.info('api.trustlines.listTrustline: FAIL', result.resultMessage);
+        res.status(500).json({
+          result: {
+            code: 500,
+            info: result.resultMessage
+          }
+        });
+      }
+    })
+    .catch((error) => {
+      rippleApi.disconnect();
+      logger.info('api.trustlines.listTrustline: FAIL', error);
+      res.status(500).json({
+        result: {
+          code: 500,
+          info: error
+        }
+      });
+    });
+  logger.info('api.trustlines.listTrustline: End');
 };

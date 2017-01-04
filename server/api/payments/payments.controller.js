@@ -68,7 +68,7 @@ exports.createPayment = (req, res) => {
     })
     .catch((error) => {
       rippleApi.disconnect();
-      logger.info('api.payments.createPayment: FAIL', result.resultMessage);
+      logger.info('api.payments.createPayment: FAIL', error);
       res.status(500).json({
         result: {
           code: 500,
@@ -77,4 +77,47 @@ exports.createPayment = (req, res) => {
       });
     });
   logger.info('api.payments.createPayment: End');
+};
+/**
+ * GET TRUSTLINE
+ */
+exports.listPayment = (req, res) => {
+  logger.info('api.payments.listPayment: Init');
+  let address = req.body.address;
+  rippleApi.connect()
+    .then(() => {
+      logger.info('api.payments.listPayment: address', address);
+      return rippleApi.getTransactions(address);
+    })
+    .then((result) => {
+      rippleApi.disconnect();
+      if (result.resultCode === "tesSUCCESS") {
+        logger.info('api.payments.listPayment: SUCCESS', result.resultMessage);
+        res.status(200).json({
+          result: {
+            code: 200,
+            info: result.resultMessage
+          }
+        });
+      } else {
+        logger.info('api.payments.listPayment: FAIL', result.resultMessage);
+        res.status(500).json({
+          result: {
+            code: 500,
+            info: result.resultMessage
+          }
+        });
+      }
+    })
+    .catch((error) => {
+      rippleApi.disconnect();
+      logger.info('api.payments.listPayment: FAIL', error);
+      res.status(500).json({
+        result: {
+          code: 500,
+          info: error
+        }
+      });
+    });
+  logger.info('api.payments.listPayment: End');
 };
