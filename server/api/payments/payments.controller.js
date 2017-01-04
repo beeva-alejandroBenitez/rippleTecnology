@@ -79,7 +79,7 @@ exports.createPayment = (req, res) => {
   logger.info('api.payments.createPayment: End');
 };
 /**
- * GET TRUSTLINE
+ * GET PAYMENT
  */
 exports.listPayment = (req, res) => {
   logger.info('api.payments.listPayment: Init');
@@ -120,4 +120,47 @@ exports.listPayment = (req, res) => {
       });
     });
   logger.info('api.payments.listPayment: End');
+};
+/**
+ * GET BALANCE
+ */
+exports.listBalance = (req, res) => {
+  logger.info('api.payments.listBalance: Init');
+  let address = req.body.address;
+  rippleApi.connect()
+    .then(() => {
+      logger.info('api.payments.listBalance: address', address);
+      return rippleApi.getBalances(address);
+    })
+    .then((result) => {
+      rippleApi.disconnect();
+      if (result.resultCode === "tesSUCCESS") {
+        logger.info('api.payments.listBalance: SUCCESS', result.resultMessage);
+        res.status(200).json({
+          result: {
+            code: 200,
+            info: result.resultMessage
+          }
+        });
+      } else {
+        logger.info('api.payments.listBalance: FAIL', result.resultMessage);
+        res.status(500).json({
+          result: {
+            code: 500,
+            info: result.resultMessage
+          }
+        });
+      }
+    })
+    .catch((error) => {
+      rippleApi.disconnect();
+      logger.info('api.payments.listBalance: FAIL', error);
+      res.status(500).json({
+        result: {
+          code: 500,
+          info: error
+        }
+      });
+    });
+  logger.info('api.payments.listBalance: End');
 };

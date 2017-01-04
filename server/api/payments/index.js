@@ -9,5 +9,6 @@ var router = express.Router();
 
 router.post('/', validate({body: schemas.createPayment}), controller.createPayment);
 router.get('/', controller.listPayment);
+router.get('/balances', controller.listBalance);
 
 module.exports = router;
