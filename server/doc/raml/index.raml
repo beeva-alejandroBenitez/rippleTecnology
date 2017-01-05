@@ -17,7 +17,7 @@ schemas:
   description: Offers Resource description
 
   post:
-    description: Create a consumer finance binding to a device and a merchant
+    description: Create offers
     headers:
     body:
       schema: CreateOrder
@@ -25,9 +25,55 @@ schemas:
       202:
         description: Accepted
         headers:
-          Location:
-            example: /offers/r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
+#          Location:
+#            example: /offers/r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
         body:
           application/json:
-            schema: !include ../../api/offers/schemas/response.json
+            example: !include ../../api/offers/schemas/examples/response.json
+
+  /cancel:
+    post:
+      description: Offer cancellation
+      headers:
+      body:
+        schema: OrderCancellation
+      responses:
+        202:
+          description: Accepted
+          body:
+            application/json:
+              example: !include ../../api/offers/schemas/examples/response.json
+
+  /{address}:
+      uriParameters:
+        address:
+          type: string
+      get:
+        description:
+        responses:
+          200:
+            description: Success
+            body:
+              application/json:
+                example: !include ../../api/offers/schemas/examples/retrieveResponse.json
+
+/transactions:
+  displayName: Transactions Resource
+  description: Transactions Resource description
+
+  get:
+    description: Retrive transactions
+    queryParameters:
+      id:
+        type: string
+        example: 02ACE87F1996E3A23690A5BB7F1774BF71CCBA68F79805831B42ABAD5913D6F4
+      address:
+        type: string
+        example: r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
+    responses:
+      200:
+        description: Success
+        body:
+          application/json:
+            example: !include ../../api/transactions/schemas/examples/response.json
 

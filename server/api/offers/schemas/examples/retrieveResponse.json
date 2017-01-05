@@ -1,0 +1,50 @@
+{
+  "result": {
+    "code": "200",
+    "info": "Success"
+  },
+  "data": {
+    "orders": [
+      {
+        "specification": {
+          "direction": "sell",
+          "quantity": {
+            "currency": "EUR",
+            "value": "17.70155237781915",
+            "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+          },
+          "totalPrice": {
+            "currency": "USD",
+            "value": "1122.990930900328",
+            "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+          }
+        },
+        "properties": {
+          "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+          "sequence": 719930,
+          "makerExchangeRate": "63.44025128030504"
+        }
+      },
+      {
+        "specification": {
+          "direction": "buy",
+          "quantity": {
+            "currency": "EUR",
+            "value": "750",
+            "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+          },
+          "totalPrice": {
+            "currency": "USD",
+            "value": "19.11697137482289",
+            "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+          }
+        },
+        "properties": {
+          "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+          "sequence": 756999,
+          "makerExchangeRate": "39.23215583132338"
+        }
+      }
+    ]
+  }
+}

@@ -24,9 +24,9 @@ exports.retrieveTransaction = (req, res) => {
             code: 200,
             info: 'Success'
           },
-          data: Array.isArray(transactions) ? {
-            transactions: transactions
-          } : transactions
+          data: {
+            transactions: Array.isArray(transactions) ? transactions : [transactions]
+          }
         });
       })
       .catch((error) => {

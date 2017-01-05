@@ -1,0 +1,14 @@
+{
+  "result": {
+    "code": "202",
+    "info": "Accepted"
+  },
+  "data": {
+    "transactionId": "02ACE87F1996E3A23690A5BB7F1774BF71CCBA68F79805831B42ABAD5913D6F4",
+    "instructions": {
+      "fee": "0.000012",
+      "sequence": 23,
+      "maxLedgerVersion": 8819954
+    }
+  }
+}
