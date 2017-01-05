@@ -7,6 +7,6 @@ const schemas = require('./schemas');
 
 var router = express.Router();
 
-router.get('/', validate({query: schemas.retrieveTransaction}), controller.retrieveTransaction);
+router.get('/', validate({query: schemas.retrieveQueryParams}), controller.retrieveTransaction);
 
 module.exports = router;

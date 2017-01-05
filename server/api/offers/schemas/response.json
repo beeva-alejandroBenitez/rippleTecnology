@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": ["result"],
+  "properties": {
+    "result": {
+      "type": "object",
+      "required": ["code", "info"],
+      "properties": {
+        "code": {
+          "type": "number"
+        },
+        "info": {
+          "type": "string"
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        },
+        "instructions": {
+          "type": "object",
+          "properties": {
+
+          }
+        }
+      }
+    }
+  }
+}

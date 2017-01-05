@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A query parameters for transaction",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "alphanumeric",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "address": {
+      "type": "string"
+    }
+  }
+}

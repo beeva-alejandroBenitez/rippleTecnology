@@ -1,0 +1,33 @@
+#%RAML 0.8
+title: Ripple Connector
+version: v1
+baseUri: https://api.github.com/{version}/api
+#documentation:
+# - title: Summary
+#   content: !include summary.md
+
+mediaType: application/json
+
+schemas:
+  - CreateOrder: !include ../../api/offers/schemas/create.json
+  - OrderCancellation: !include ../../api/offers/schemas/cancel.json
+
+/offers:
+  displayName: Offers Resource
+  description: Offers Resource description
+
+  post:
+    description: Create a consumer finance binding to a device and a merchant
+    headers:
+    body:
+      schema: CreateOrder
+    responses:
+      202:
+        description: Accepted
+        headers:
+          Location:
+            example: /offers/r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
+        body:
+          application/json:
+            schema: !include ../../api/offers/schemas/response.json
+

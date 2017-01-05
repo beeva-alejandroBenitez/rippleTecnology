@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A representation of an order",
+  "type": "object",
+  "required": ["address", "secret", "order"],
+  "properties": {
+    "address": {
+      "type": "string"
+    },
+    "secret": {
+      "type": "string"
+    },
+    "order": {
+      "type": "object",
+      "required": ["direction", "quantity", "totalPrice"],
+      "properties": {
+        "direction": {
+          "type": "string",
+          "enum": ["buy", "sell"]
+        },
+        "quantity": {
+          "type": "object",
+          "required": ["currency", "counterparty", "value"],
+          "properties": {
+            "currency": {
+              "type": "string"
+            },
+            "counterparty": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        "totalPrice": {
+          "type": "object",
+          "required": ["currency", "value"],
+          "properties": {
+            "currency": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        "passive": {
+          "type": "boolean"
+        },
+        "fillOrKill": {
+          "type": "boolean"
+        },
+        "immediateOrCancel": {
+          "type": "boolean"
+        },
+        "expirationTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "instructions": {
+      "type": "object",
+      "properties": {
+        "fee": {
+          "type": "string"
+        },
+        "maxFee": {
+          "type": "string"
+        },
+        "sequence": {
+          "type": "string"
+        },
+        "maxLedgerVersion": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

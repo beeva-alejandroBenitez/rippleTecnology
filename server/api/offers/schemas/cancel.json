@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A representation of an orderCancellation",
+  "type": "object",
+  "required": ["address", "secret", "orderCancellation"],
+  "properties": {
+    "address": {
+      "type": "string"
+    },
+    "secret": {
+      "type": "string"
+    },
+    "orderCancellation": {
+      "type": "object",
+      "required": ["orderSequence"],
+      "properties": {
+        "orderSequence": {
+          "type": "number"
+        }
+      }
+    },
+    "instructions": {
+      "type": "object",
+      "properties": {
+        "fee": {
+          "type": "string"
+        },
+        "maxFee": {
+          "type": "string"
+        },
+        "sequence": {
+          "type": "string"
+        },
+        "maxLedgerVersion": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
