@@ -14,9 +14,10 @@ export default function(app) {
   app.use('/api/offers', require('./api/offers'));
   app.use('/api/payments', require('./api/payments'));
   app.use('/api/transactions', require('./api/transactions'));
+  app.use('/api/trustlines', require('./api/trustlines'));
 
   app.use('/auth', require('./auth').default);
-  
+
   app.use(middlewares.jsonSchemaValidation('JsonSchemaValidation'));
 
   // All undefined asset or api routes should return a 404

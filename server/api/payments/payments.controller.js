@@ -1,68 +1,166 @@
 'use strict';
 
-import restCall from '../../components/httpconnector';
 import logger from '../../components/logger';
-import async from 'async';
-
 const config = global.config;
-const rippleEndpoint = config.rippleEndpoint;
-const rippleVersion = config.rippleEndpoint;
+const rippleApi = config.rippleApi;
 
-// let rippleURLs = this.urls = {
-//   url_accounts : rippleEndpoint + rippleVersion + '/accounts/',
-//   ripple_transaction: rippleEndpoint + rippleVersion + '/transactions/:{transaction_hash}',
-//   get_generate_UUID : rippleEndpoint + rippleVersion + '/uuid',
-//   get_transaction_fee : rippleEndpoint + rippleVersion + '/transaction-fee',
-//   get_order_book: rippleEndpoint + rippleVersion + '/accounts/:{address}/order_book/:{base_currency}+:{base_counterparty}/:{destination_currency}+:{destination_counterparty}'
-// };
-
-const header = {
-  "content-type": "application/json"
+/**
+ * PAYMENT
+ */
+exports.createPayment = (req, res) => {
+  logger.info('api.payments.createPayment: Init');
+  let sourceAddress = req.body.sourceAddress;
+  let sourceSecret= req.body.sourceSecret;
+  let currency= req.body.currency;
+  let destAddress= req.body.destAddress;
+  let amount= req.body.amount;
+  rippleApi.connect()
+    .then(() => {
+      let payment = {
+        source: {
+          address: sourceAddress,
+          maxAmount: {
+            value: amount,
+            currency: currency
+          }
+        },
+        destination: {
+          address: destAddress,
+          amount: {
+            value: amount,
+            currency: currency
+          }
+        }
+      };
+      logger.info('api.payments.createPayment: Payment', payment);
+      return rippleApi.preparePayment(sourceAddress, payment);
+    })
+    .then(preparedPayment => {
+      logger.info('api.payments.createPayment: preparedPayment', preparedPayment);
+      return rippleApi.sign(preparedPayment.txJSON, sourceSecret);
+    })
+    .then((signedPayment) => {
+      logger.info('api.payments.createPayment: signedPayment', signedPayment);
+      return rippleApi.submit(signedPayment.signedTransaction);
+    })
+    .then((result) => {
+      rippleApi.disconnect();
+      if (result.resultCode === "tesSUCCESS") {
+        logger.info('api.payments.createPayment: SUCCESS', result.resultMessage);
+        res.status(200).json({
+          result: {
+            code: 200,
+            info: result.resultMessage
+          },
+          data: {
+            transactionId: signedPayment.id
+          }
+        });
+      } else {
+        logger.info('api.payments.createPayment: FAIL', result.resultMessage);
+        res.status(500).json({
+          result: {
+            code: 500,
+            info: result.resultMessage
+          }
+        });
+      }
+    })
+    .catch((error) => {
+      rippleApi.disconnect();
+      logger.info('api.payments.createPayment: FAIL', error);
+      res.status(500).json({
+        result: {
+          code: 500,
+          info: error
+        }
+      });
+    });
+  logger.info('api.payments.createPayment: End');
 };
-
 /**
- * Prepare Payments
+ * GET PAYMENT
  */
-export function preparePayments(req, res) {
-  let source_account = 'rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC';
-  let destination_account = 'rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha';
-  let destination_value = '1';
-  let destination_currency = 'BEECOIN';
-  let source_currency = 'LABCOIN';
-  var preparePaymentRippleUrl = rippleURLs["url_accounts"] + source_account + '/payments/paths/' + destination_account + '/' + destination_value + '+' + destination_currency + '?source_currencies=' + source_currency;
-  logger.info('api.payments.preparePayments: Calling RIPPLE ' + preparePaymentRippleUrl);
-  return restCall.getApiCall(preparePaymentRippleUrl, undefined, undefined)
-    .then(response => {
-      console.log('RESPONSE:::' + response);
-      res.status(response.result.status_code).json(response);
+exports.listPayment = (req, res) => {
+  logger.info('api.payments.listPayment: Init');
+  let address = req.body.address;
+  rippleApi.connect()
+    .then(() => {
+      logger.info('api.payments.listPayment: address', address);
+      return rippleApi.getTransactions(address);
     })
-    .catch(error => {
-      console.log('CATCH:::' + error);
-      res.status(500).json(error);
+    .then((result) => {
+      rippleApi.disconnect();
+      if (result.resultCode === "tesSUCCESS") {
+        logger.info('api.payments.listPayment: SUCCESS', result.resultMessage);
+        res.status(200).json({
+          result: {
+            code: 200,
+            info: result.resultMessage
+          }
+        });
+      } else {
+        logger.info('api.payments.listPayment: FAIL', result.resultMessage);
+        res.status(500).json({
+          result: {
+            code: 500,
+            info: result.resultMessage
+          }
+        });
+      }
+    })
+    .catch((error) => {
+      rippleApi.disconnect();
+      logger.info('api.payments.listPayment: FAIL', error);
+      res.status(500).json({
+        result: {
+          code: 500,
+          info: error
+        }
+      });
     });
-}
-
+  logger.info('api.payments.listPayment: End');
+};
 /**
- * Submit Payments
+ * GET BALANCE
  */
-export function submitPayments(req, res) {
-  let source_secret;
-  let payments;
-  let uuid;
-  var submitPaymentRippleUrl = rippleURLs["url_accounts"] + payments.source_account + '/payments?validated=true';
-  var jsonSubmitPaymentRipple = {
-    secret: source_secret,
-    client_resource_id: uuid,
-    payment: payments
-  };
-  logger.info('api.payments.submitPayments: Calling RIPPLE ' + submitPaymentRippleUrl);
-  return restCall.postApiCall(submitPaymentRippleUrl, jsonSubmitPaymentRipple, undefined)
-    .then(response => {
-      console.log('RESPONSE SUBMIT:::' + response);
-      res.status(response.result.status_code).json(response);
+exports.listBalance = (req, res) => {
+  logger.info('api.payments.listBalance: Init');
+  let address = req.body.address;
+  rippleApi.connect()
+    .then(() => {
+      logger.info('api.payments.listBalance: address', address);
+      return rippleApi.getBalances(address);
     })
-    .catch(error => {
-      console.log('CATCH SUBMIT:::' + error);
-      res.status(500).json(error);
+    .then((result) => {
+      rippleApi.disconnect();
+      if (result.resultCode === "tesSUCCESS") {
+        logger.info('api.payments.listBalance: SUCCESS', result.resultMessage);
+        res.status(200).json({
+          result: {
+            code: 200,
+            info: result.resultMessage
+          }
+        });
+      } else {
+        logger.info('api.payments.listBalance: FAIL', result.resultMessage);
+        res.status(500).json({
+          result: {
+            code: 500,
+            info: result.resultMessage
+          }
+        });
+      }
+    })
+    .catch((error) => {
+      rippleApi.disconnect();
+      logger.info('api.payments.listBalance: FAIL', error);
+      res.status(500).json({
+        result: {
+          code: 500,
+          info: error
+        }
+      });
     });
-}
+  logger.info('api.payments.listBalance: End');
+};
