@@ -226,19 +226,28 @@ export function create(req, res) {
       ],
       function (errorSerie, resultSerie) {
         if(errorSerie) {
-          res.status(500).json(errorSerie);
+          res.status(500).json({
+            result: {
+              code: 500,
+              info: errorSerie
+            }
+          });
         }
         else {
           /**
            * TODO: INSERT IN DB
            */
           let response = {
-            user: {
-              email: req.body.email,
-              wallet: newWallet.address
-            }
+              address: newWallet.address,
+              secret: newWallet.secret
           };
-          res.status(200).send(response);
+          res.status(200).send({
+            result: {
+              code: 200,
+              info: result.resultMessage
+            },
+            data: response
+          });
         }
       });
     }
