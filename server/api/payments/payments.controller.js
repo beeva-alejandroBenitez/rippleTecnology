@@ -1,8 +1,7 @@
 'use strict';
 
-import logger from '../../components/logger';
-const config = global.config;
-const rippleApi = config.rippleApi;
+const logger = require(global.config.components + '/logger');
+const rippleApi = global.config.rippleApi;
 
 /**
  * PAYMENT
@@ -14,6 +13,7 @@ exports.createPayment = (req, res) => {
   let currency= req.body.currency;
   let destAddress= req.body.destAddress;
   let amount= req.body.amount;
+  let transactionId;
   rippleApi.connect()
     .then(() => {
       let payment = {
@@ -41,6 +41,7 @@ exports.createPayment = (req, res) => {
     })
     .then((signedPayment) => {
       logger.info('api.payments.createPayment: signedPayment', signedPayment);
+      transactionId = signedPayment.id;
       return rippleApi.submit(signedPayment.signedTransaction);
     })
     .then((result) => {
@@ -53,11 +54,11 @@ exports.createPayment = (req, res) => {
             info: result.resultMessage
           },
           data: {
-            transactionId: signedPayment.id
+            transactionId: transactionId
           }
         });
       } else {
-        logger.info('api.payments.createPayment: FAIL', result.resultMessage);
+        logger.info('api.payments.createPayment: FAIL', JSON.stringify(result));
         res.status(500).json({
           result: {
             code: 500,
