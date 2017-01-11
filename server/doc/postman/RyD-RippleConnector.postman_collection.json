@@ -1,0 +1,113 @@
+{
+	"variables": [],
+	"info": {
+		"name": "RyD-RippleConnector",
+		"_postman_id": "fe13be2d-7b2d-8395-4462-fd5ee10a99ce",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MAKE A PAYMENT",
+			"request": {
+				"url": "http://localhost:9000/api/payments",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\"secret\": \"shrPonPkeyxFdLWsN1L2aCrep8b7p\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"3\",\n\t\t\t\t\"currency\": \"BEE\",\n\t\t\t\t\"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"rhaQmNvGRKLGYJiHLLmbgRMgbGjPDvSGq9\",\n\t\t\"amount\": {\n\t\t  \"value\": \"1\",\n\t\t  \"currency\": \"GEE\",\n\t\t  \"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t}\n\t\t}\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE USER",
+			"request": {
+				"url": "http://localhost:9000/api/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"currency\": \"GEE\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET TRANSACTION",
+			"request": {
+				"url": "http://localhost:9000/api/transactions?id=7BADB1578D8A471CF1A3CE54A477BF7ECA31C0101926C101949482169FD5AC9A",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LIST OFFERS",
+			"request": {
+				"url": "http://localhost:9000/api/offers/rab4shZ4GSbZetpd6WccTSecKGpwNhKrRu",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE OFFER",
+			"request": {
+				"url": "http://localhost:9000/api/offers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\": \"rhaQmNvGRKLGYJiHLLmbgRMgbGjPDvSGq9\",\n\t\"secret\": \"sncFgLjtgiMq5rMMJWHti1YDZAmK7\",\n\t\"order\": {\n\t  \"direction\": \"buy\",\n\t  \"quantity\": {\n\t    \"currency\": \"BEE\",\n\t    \"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\",\n\t    \"value\": \"2\"\n\t  },\n\t  \"totalPrice\": {\n\t    \"currency\": \"GEE\",\n\t    \"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\",\n\t    \"value\": \"4\"\n\t  },\n\t  \"passive\": true\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "CANCEL OFFER",
+			"request": {
+				"url": "http://localhost:9000/api/offers/cancel",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\": \"rab4shZ4GSbZetpd6WccTSecKGpwNhKrRu\",\n\t\"secret\": \"sskBCx3j6JS6yK5U7YU3xfvydy2ve\",\n\t\"orderCancellation\": {\n\t  \"orderSequence\": 2\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
