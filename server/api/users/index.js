@@ -8,7 +8,7 @@ const schemas = require('./schemas');
 var router = express.Router();
 
 router.get('/', controller.list);
-router.post('/', validate({body: schemas.createOrder}), controller.create);
+router.post('/', validate({body: schemas.createUser}), controller.create);
 router.get('/test', controller.test);
 
 module.exports = router;

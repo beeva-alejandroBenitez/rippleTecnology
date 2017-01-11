@@ -244,7 +244,7 @@ export function create(req, res) {
           res.status(200).send({
             result: {
               code: 200,
-              info: result.resultMessage
+              info: resultSerie.resultMessage
             },
             data: response
           });

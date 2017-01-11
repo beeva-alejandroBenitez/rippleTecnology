@@ -3,25 +3,57 @@
   "description": "A query parameters for transaction",
   "type": "object",
   "properties": {
-    "sourceAddress": {
-      "type": "string",
-      "required": true
+    "address": {
+      "type": "string"
     },
-    "sourceSecret": {
-      "type": "string",
-      "required": true
+    "secret": {
+      "type": "string"
     },
-    "currency": {
-      "type": "string",
-      "required": true
-    },
-    "destAddress": {
-      "type": "string",
-      "required": true
-    },
-    "amount": {
-      "type": "string",
-      "required": true
+    "payment": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "address": {
+            "type": "string"
+          },
+          "maxAmount": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "currency": {
+                "type": "string"
+              },
+              "counterparty": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "destination": {
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "currency": {
+                  "type": "string"
+                },
+                "counterparty": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

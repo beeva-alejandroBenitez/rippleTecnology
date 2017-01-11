@@ -1,3 +1,3 @@
 'use strict';
 
-exports.createOrder = require('./create.json');
+exports.createUser = require('./create.json');

@@ -8,36 +8,36 @@ const rippleApi = global.config.rippleApi;
  */
 exports.createPayment = (req, res) => {
   logger.info('api.payments.createPayment: Init');
-  let sourceAddress = req.body.sourceAddress;
-  let sourceSecret= req.body.sourceSecret;
-  let currency= req.body.currency;
-  let destAddress= req.body.destAddress;
-  let amount= req.body.amount;
+  // let sourceAddress = req.body.sourceAddress;
+  // let sourceSecret= req.body.sourceSecret;
+  // let currency= req.body.currency;
+  // let destAddress= req.body.destAddress;
+  // let amount= req.body.amount;
   let transactionId;
   rippleApi.connect()
     .then(() => {
-      let payment = {
-        source: {
-          address: sourceAddress,
-          maxAmount: {
-            value: amount,
-            currency: currency
-          }
-        },
-        destination: {
-          address: destAddress,
-          amount: {
-            value: amount,
-            currency: currency
-          }
-        }
-      };
-      logger.info('api.payments.createPayment: Payment', payment);
-      return rippleApi.preparePayment(sourceAddress, payment);
+      // let payment = {
+      //   source: {
+      //     address: sourceAddress,
+      //     maxAmount: {
+      //       value: amount,
+      //       currency: currency
+      //     }
+      //   },
+      //   destination: {
+      //     address: destAddress,
+      //     amount: {
+      //       value: amount,
+      //       currency: currency
+      //     }
+      //   }
+      // };
+      logger.info('api.payments.createPayment: Payment', req.body);
+      return rippleApi.preparePayment(req.body.address, req.body.payment);
     })
     .then(preparedPayment => {
       logger.info('api.payments.createPayment: preparedPayment', preparedPayment);
-      return rippleApi.sign(preparedPayment.txJSON, sourceSecret);
+      return rippleApi.sign(preparedPayment.txJSON, req.body.secret);
     })
     .then((signedPayment) => {
       logger.info('api.payments.createPayment: signedPayment', signedPayment);
