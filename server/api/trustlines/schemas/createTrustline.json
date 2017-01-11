@@ -1,3 +1,33 @@
 {
-
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A query parameters for transaction",
+  "type": "object",
+  "properties": {
+    "sourceAddress": {
+      "type": "string",
+      "required": true
+    },
+    "sourceSecret": {
+      "type": "string",
+      "required": true
+    },
+    "currency": {
+      "type": "string",
+      "required": true
+    },
+    "destAddress": {
+      "type": "string",
+      "required": true
+    },
+    "limit": {
+      "type": "string",
+      "required": true
+    },
+    "ripplingDisabled": {
+      "type": "boolean"
+    },
+    "frozen": {
+      "type": "boolean"
+    }
+  }
 }
