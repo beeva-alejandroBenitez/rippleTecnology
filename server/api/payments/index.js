@@ -3,7 +3,7 @@
 const express = require('express');
 const { validate } = require('express-jsonschema');
 const controller = require('./payments.controller');
-const schemas = require('../../schemas/payments.schema');
+const schemas = require('./schemas');
 
 var router = express.Router();
 

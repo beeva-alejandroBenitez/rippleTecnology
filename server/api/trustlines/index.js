@@ -3,7 +3,7 @@
 const express = require('express');
 const { validate } = require('express-jsonschema');
 const controller = require('./trustlines.controller.js');
-const schemas = require('../../schemas/trustline.schema');
+const schemas = require('./schemas');
 
 var router = express.Router();
 

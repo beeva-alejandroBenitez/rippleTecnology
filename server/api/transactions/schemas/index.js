@@ -1,3 +1,3 @@
 'use strict';
 
-exports.retrieveQueryParams = require('./schemas/retrieveQueryParams.json');
+exports.retrieveQueryParams = require('./retrieveQueryParams.json');
