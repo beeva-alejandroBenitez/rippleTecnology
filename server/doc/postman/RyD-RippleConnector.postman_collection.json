@@ -2,30 +2,150 @@
 	"variables": [],
 	"info": {
 		"name": "RyD-RippleConnector",
-		"_postman_id": "fe13be2d-7b2d-8395-4462-fd5ee10a99ce",
+		"_postman_id": "76547dcd-6195-d617-1fe4-9c23cbcb34bd",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "MAKE A PAYMENT",
-			"request": {
-				"url": "http://localhost:9000/api/payments",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+			"name": "DEPOSITS",
+			"description": "",
+			"item": [
+				{
+					"name": "MAKE DEPOSIT BEE",
+					"request": {
+						"url": "http://localhost:9000/api/payments",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "//x-accountsid",
+								"value": "asdfghj",
+								"description": "",
+								"disabled": true
+							},
+							{
+								"key": "//x-authtoken",
+								"value": "asdfgh",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"address\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\",\n\t\"secret\": \"safgopmsxNtnxA1TMXPPmCSoeQUrF\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"10\",\n\t\t\t\t\"currency\": \"BEE\",\n\t\t\t\t\"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\t\"amount\": {\n\t\t  \"value\": \"10\",\n\t\t  \"currency\": \"BEE\",\n\t\t  \"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t}\n\t\t}\n\t}\n}\n"
+						},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\"secret\": \"shrPonPkeyxFdLWsN1L2aCrep8b7p\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"3\",\n\t\t\t\t\"currency\": \"BEE\",\n\t\t\t\t\"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"rhaQmNvGRKLGYJiHLLmbgRMgbGjPDvSGq9\",\n\t\t\"amount\": {\n\t\t  \"value\": \"1\",\n\t\t  \"currency\": \"GEE\",\n\t\t  \"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t}\n\t\t}\n\t}\n}"
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "MAKE DEPOSIT GEE",
+					"request": {
+						"url": "http://localhost:9000/api/payments",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "//x-accountsid",
+								"value": "asdfghj",
+								"description": "",
+								"disabled": true
+							},
+							{
+								"key": "//x-authtoken",
+								"value": "asdfgh",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"address\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\",\n\t\"secret\": \"shnfGNinxwmzpwAqASpu2j4wd4PtS\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"10\",\n\t\t\t\t\"currency\": \"GEE\",\n\t\t\t\t\"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\t\"amount\": {\n\t\t  \"value\": \"10\",\n\t\t  \"currency\": \"BEE\",\n\t\t  \"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t}\n\t\t}\n\t}\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WITHDRAWALS",
+			"description": "",
+			"item": [
+				{
+					"name": "MAKE WITHDRAWAL BEE",
+					"request": {
+						"url": "http://localhost:9000/api/payments",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "//x-accountsid",
+								"value": "asdfghj",
+								"description": "",
+								"disabled": true
+							},
+							{
+								"key": "//x-authtoken",
+								"value": "asdfgh",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\"secret\": \"sswuLVtMo1RUmzp5P6HovdjKedS3A\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"10\",\n\t\t\t\t\"currency\": \"BEE\",\n\t\t\t\t\"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\",\n\t\t\"amount\": {\n\t\t  \"value\": \"10\",\n\t\t  \"currency\": \"BEE\",\n\t\t  \"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t}\n\t\t}\n\t}\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MAKE WITHDRAWAL GEE",
+					"request": {
+						"url": "http://localhost:9000/api/payments",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "//x-accountsid",
+								"value": "asdfghj",
+								"description": "",
+								"disabled": true
+							},
+							{
+								"key": "//x-authtoken",
+								"value": "asdfgh",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\"secret\": \"sswuLVtMo1RUmzp5P6HovdjKedS3A\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"10\",\n\t\t\t\t\"currency\": \"GEE\",\n\t\t\t\t\"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\",\n\t\t\"amount\": {\n\t\t  \"value\": \"10\",\n\t\t  \"currency\": \"GEE\",\n\t\t  \"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t}\n\t\t}\n\t}\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "CREATE USER",
@@ -53,7 +173,10 @@
 				"url": "http://localhost:9000/api/transactions?id=7BADB1578D8A471CF1A3CE54A477BF7ECA31C0101926C101949482169FD5AC9A",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -64,7 +187,10 @@
 				"url": "http://localhost:9000/api/offers/rab4shZ4GSbZetpd6WccTSecKGpwNhKrRu",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -104,6 +230,26 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"address\": \"rab4shZ4GSbZetpd6WccTSecKGpwNhKrRu\",\n\t\"secret\": \"sskBCx3j6JS6yK5U7YU3xfvydy2ve\",\n\t\"orderCancellation\": {\n\t  \"orderSequence\": 2\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "MAKE A PAYMENT",
+			"request": {
+				"url": "http://localhost:9000/api/payments",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\"secret\": \"shrPonPkeyxFdLWsN1L2aCrep8b7p\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"3\",\n\t\t\t\t\"currency\": \"BEE\",\n\t\t\t\t\"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"rhaQmNvGRKLGYJiHLLmbgRMgbGjPDvSGq9\",\n\t\t\"amount\": {\n\t\t  \"value\": \"1\",\n\t\t  \"currency\": \"GEE\",\n\t\t  \"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t}\n\t\t}\n\t}\n}"
 				},
 				"description": ""
 			},
