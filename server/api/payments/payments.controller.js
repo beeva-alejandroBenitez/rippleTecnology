@@ -106,7 +106,7 @@ exports.listPayment = (req, res) => {
  */
 exports.listBalance = (req, res) => {
   logger.info('api.payments.listBalance: Init');
-  let address = req.body.address;
+  let address = req.query.address;
   rippleApi.connect()
     .then(() => {
       logger.info('api.payments.listBalance: address', address);
@@ -114,23 +114,12 @@ exports.listBalance = (req, res) => {
     })
     .then((result) => {
       rippleApi.disconnect();
-      if (result.resultCode === "tesSUCCESS") {
-        logger.info('api.payments.listBalance: SUCCESS', result.resultMessage);
-        res.status(200).json({
-          result: {
-            code: 200,
-            info: result.resultMessage
-          }
-        });
-      } else {
-        logger.info('api.payments.listBalance: FAIL', result.resultMessage);
-        res.status(500).json({
-          result: {
-            code: 500,
-            info: result.resultMessage
-          }
-        });
-      }
+      res.status(200).json({
+        result: {
+          code: 200,
+          info: result
+        }
+      });
     })
     .catch((error) => {
       rippleApi.disconnect();
