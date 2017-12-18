@@ -77,7 +77,7 @@ exports.createTrustline = (req, res) => {
  */
 exports.listTrustline = (req, res) => {
   logger.info('api.trustlines.listTrustline: Init');
-  let address = req.body.address;
+  let address = req.query.address;
   rippleApi.connect()
     .then(() => {
       logger.info('api.trustlines.listTrustline: address', address);
@@ -85,23 +85,13 @@ exports.listTrustline = (req, res) => {
     })
     .then((result) => {
       rippleApi.disconnect();
-      if (result.resultCode === "tesSUCCESS") {
-        logger.info('api.trustlines.listTrustline: SUCCESS', result.resultMessage);
-        res.status(200).json({
-          result: {
-            code: 200,
-            info: result.resultMessage
-          }
-        });
-      } else {
-        logger.info('api.trustlines.listTrustline: FAIL', result.resultMessage);
-        res.status(500).json({
-          result: {
-            code: 500,
-            info: result.resultMessage
-          }
-        });
-      }
+      logger.info('api.trustlines.listTrustline: SUCCESS', result.resultMessage);
+      res.status(200).json({
+        result: {
+          code: 200,
+          info: result
+        }
+      });
     })
     .catch((error) => {
       rippleApi.disconnect();
