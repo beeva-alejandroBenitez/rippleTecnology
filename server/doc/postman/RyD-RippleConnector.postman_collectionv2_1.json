@@ -1,0 +1,347 @@
+{
+	"info": {
+		"name": "RyD-RippleConnector",
+		"_postman_id": "2e66fdec-4c71-c3da-c475-c9fc5397657a",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DEPOSITS",
+			"item": [
+				{
+					"name": "MAKE DEPOSIT BEE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-accountsid",
+								"value": "asdfghj",
+								"disabled": true
+							},
+							{
+								"key": "x-authtoken",
+								"value": "asdfgh",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"address\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\",\n\t\"secret\": \"safgopmsxNtnxA1TMXPPmCSoeQUrF\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"10\",\n\t\t\t\t\"currency\": \"BEE\",\n\t\t\t\t\"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\t\"amount\": {\n\t\t  \"value\": \"10\",\n\t\t  \"currency\": \"BEE\",\n\t\t  \"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t}\n\t\t}\n\t}\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MAKE DEPOSIT GEE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-accountsid",
+								"value": "asdfghj",
+								"disabled": true
+							},
+							{
+								"key": "x-authtoken",
+								"value": "asdfgh",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"address\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\",\n\t\"secret\": \"shnfGNinxwmzpwAqASpu2j4wd4PtS\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"10\",\n\t\t\t\t\"currency\": \"GEE\",\n\t\t\t\t\"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"raxBSzNULCibywSTrS5cwHkkCWhgtYoknV\",\n\t\t\"amount\": {\n\t\t  \"value\": \"10\",\n\t\t  \"currency\": \"GEE\",\n\t\t  \"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t}\n\t\t}\n\t}\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WITHDRAWALS",
+			"item": [
+				{
+					"name": "MAKE WITHDRAWAL BEE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-accountsid",
+								"value": "asdfghj",
+								"disabled": true
+							},
+							{
+								"key": "x-authtoken",
+								"value": "asdfgh",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\"secret\": \"sswuLVtMo1RUmzp5P6HovdjKedS3A\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"10\",\n\t\t\t\t\"currency\": \"BEE\",\n\t\t\t\t\"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\",\n\t\t\"amount\": {\n\t\t  \"value\": \"10\",\n\t\t  \"currency\": \"BEE\",\n\t\t  \"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t}\n\t\t}\n\t}\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MAKE WITHDRAWAL GEE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-accountsid",
+								"value": "asdfghj",
+								"disabled": true
+							},
+							{
+								"key": "x-authtoken",
+								"value": "asdfgh",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\"secret\": \"sswuLVtMo1RUmzp5P6HovdjKedS3A\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"10\",\n\t\t\t\t\"currency\": \"GEE\",\n\t\t\t\t\"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\",\n\t\t\"amount\": {\n\t\t  \"value\": \"10\",\n\t\t  \"currency\": \"GEE\",\n\t\t  \"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t}\n\t\t}\n\t}\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CREATE USER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"currency\": \"GEE\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET TRANSACTION",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/transactions?id=7BADB1578D8A471CF1A3CE54A477BF7ECA31C0101926C101949482169FD5AC9A",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "7BADB1578D8A471CF1A3CE54A477BF7ECA31C0101926C101949482169FD5AC9A"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST OFFERS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/offers/rab4shZ4GSbZetpd6WccTSecKGpwNhKrRu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"offers",
+						"rab4shZ4GSbZetpd6WccTSecKGpwNhKrRu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE OFFER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\": \"rhaQmNvGRKLGYJiHLLmbgRMgbGjPDvSGq9\",\n\t\"secret\": \"sncFgLjtgiMq5rMMJWHti1YDZAmK7\",\n\t\"order\": {\n\t  \"direction\": \"buy\",\n\t  \"quantity\": {\n\t    \"currency\": \"BEE\",\n\t    \"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\",\n\t    \"value\": \"2\"\n\t  },\n\t  \"totalPrice\": {\n\t    \"currency\": \"GEE\",\n\t    \"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\",\n\t    \"value\": \"4\"\n\t  },\n\t  \"passive\": true\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/offers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"offers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CANCEL OFFER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\": \"rab4shZ4GSbZetpd6WccTSecKGpwNhKrRu\",\n\t\"secret\": \"sskBCx3j6JS6yK5U7YU3xfvydy2ve\",\n\t\"orderCancellation\": {\n\t  \"orderSequence\": 2\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/offers/cancel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"offers",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MAKE A PAYMENT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\"secret\": \"shrPonPkeyxFdLWsN1L2aCrep8b7p\",\n\t\"payment\": {\n\t\t\"source\": {\n\t\t\t\"address\": \"rpcHM9qBgGp5PeafQF5LtF5tPcY8EzkmqR\",\n\t\t\t\"maxAmount\": {\n\t\t\t\t\"value\": \"3\",\n\t\t\t\t\"currency\": \"BEE\",\n\t\t\t\t\"counterparty\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\"\n\t\t\t}\n\t\t},\n\t\t\"destination\": {\n\t\t\"address\": \"rhaQmNvGRKLGYJiHLLmbgRMgbGjPDvSGq9\",\n\t\t\"amount\": {\n\t\t  \"value\": \"1\",\n\t\t  \"currency\": \"GEE\",\n\t\t  \"counterparty\": \"rQH8evp6DMQ9FKsyb4rbZPkrZA7g7xEXha\"\n\t\t}\n\t\t}\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
