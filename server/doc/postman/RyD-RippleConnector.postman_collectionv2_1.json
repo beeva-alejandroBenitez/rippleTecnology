@@ -2,6 +2,7 @@
 	"info": {
 		"name": "RyD-RippleConnector",
 		"_postman_id": "2e66fdec-4c71-c3da-c475-c9fc5397657a",
+		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -166,6 +167,79 @@
 								"payments"
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TRUSTLINES",
+			"description": "",
+			"item": [
+				{
+					"name": "CREATE TRUSTLINE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"sourceAddress\": \"rhaQmNvGRKLGYJiHLLmbgRMgbGjPDvSGq9\",\n    \"sourceSecret\": \"sncFgLjtgiMq5rMMJWHti1YDZAmK7\",\n    \"currency\": \"BEE\",\n    \"destAddress\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\",\n    \"limit\": \"1000\",\n    \"ripplingDisabled\": false,\n    \"frozen\": false\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/trustlines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"trustlines"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET TRUSTLINES",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"sourceAddress\": \"rhaQmNvGRKLGYJiHLLmbgRMgbGjPDvSGq9\",\n    \"sourceSecret\": \"sncFgLjtgiMq5rMMJWHti1YDZAmK7\",\n    \"currency\": \"BEE\",\n    \"destAddress\": \"rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC\",\n    \"limit\": \"1000\",\n    \"ripplingDisabled\": false,\n    \"frozen\": false\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/trustlines?address=rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"trustlines"
+							],
+							"query": [
+								{
+									"key": "address",
+									"value": "rLDfaRrxBZ9RuFiUndwtrzZHkYLTPBL1oC",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
 					},
 					"response": []
 				}
