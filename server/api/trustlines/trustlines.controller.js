@@ -14,7 +14,7 @@ exports.createTrustline = (req, res) => {
   let currency= req.body.currency;
   let destAddress= req.body.destAddress;
   let limit = req.body.limit;
-  let ripplingDisabled = (ripplingDisabled) ? req.body.ripplingDisabled : false; //Optional If true, payments cannot ripple through this trustline.
+  let ripplingDisabled = (req.body.ripplingDisabled) ? req.body.ripplingDisabled : false; //Optional If true, payments cannot ripple through this trustline.
   let frozen = (frozen) ? req.body.frozen : false; //Optional If true, the trustline is frozen, which means that funds can only be sent to the owner.
   rippleApi.connect()
     .then(() => {
